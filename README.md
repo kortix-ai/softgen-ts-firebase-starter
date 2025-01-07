@@ -1,0 +1,1 @@
+# softgen-ts-firebase-starter
