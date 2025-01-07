@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# Initialize workspace if it's empty
 if [ ! -f "/app/package.json" ]; then
     echo "First time setup: Copying template files..."
-    cp -r /template-files/* /app/
-    cp -r /template-files/.* /app/ 2>/dev/null || true  # Copy hidden files too
+    # Copy all files except init-workspace.sh and Dockerfile
+    cd /template-files && find . -type f ! -name 'init-workspace.sh' ! -name 'Dockerfile' -exec cp --parents {} /app/ \;
+    cd /template-files && find . -type f -name '.*' ! -name 'init-workspace.sh' ! -name 'Dockerfile' -exec cp --parents {} /app/ \; 2>/dev/null || true
     
     echo "Installing dependencies..."
     cd /app && npm install
