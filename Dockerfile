@@ -5,7 +5,7 @@ FROM node:18-alpine AS builder
 RUN apk add --no-cache git
 
 # Clone the template repository during image build
-RUN git clone https://github.com/softgenai/sg-firebase-nextjs-template /template-files
+RUN git clone https://github.com/kortix-ai/softgen-ts-firebase-starter /template-files
 
 # Remove .git directory to avoid conflicts
 RUN rm -rf /template-files/.git
