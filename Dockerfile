@@ -36,3 +36,6 @@ RUN chmod +x /usr/local/bin/init-workspace.sh
 
 # Use initialization script as entrypoint
 ENTRYPOINT ["/usr/local/bin/init-workspace.sh"]
+
+# Default command
+CMD cd /app && pm2 start
