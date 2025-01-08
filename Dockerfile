@@ -35,4 +35,6 @@ COPY init-workspace.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/init-workspace.sh
 
 # Use initialization script as entrypoint
-ENTRYPOINT ["/usr/local/bin/init-workspace.sh"]
+ENTRYPOINT ["/bin/sh", "-c", "/usr/local/bin/init-workspace.sh && sleep infinity"]
+
+
