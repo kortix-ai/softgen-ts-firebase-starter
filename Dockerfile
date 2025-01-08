@@ -25,18 +25,17 @@ RUN apk add --no-cache tmux git
 # Copy template files from builder stage
 COPY --from=builder /template-files /template-files
 
-# Copy the initialization script
-COPY init-workspace.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/init-workspace.sh
-
-# Create app directory and ensure proper permissions
-RUN mkdir -p /app && chmod 777 /app
-
 # Set up environment
 ENV GOOGLE_APPLICATION_CREDENTIALS="/app/firebase-service-account.json"
 EXPOSE 3000
 WORKDIR /app
 
+# Add initialization script
+COPY init-workspace.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/init-workspace.sh
+
 # Use initialization script as entrypoint
 ENTRYPOINT ["/usr/local/bin/init-workspace.sh"]
-CMD ["pm2-runtime", "start", "ecosystem.config.js"]
+
+# Default command
+CMD cd /app && pm2 start
