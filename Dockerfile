@@ -36,4 +36,3 @@ RUN chmod +x /usr/local/bin/init-workspace.sh
 
 # Use initialization script as entrypoint
 ENTRYPOINT ["/usr/local/bin/init-workspace.sh"]
-CMD ["pm2-runtime", "start", "ecosystem.config.js"]
