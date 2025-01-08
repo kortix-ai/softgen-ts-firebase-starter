@@ -8,7 +8,8 @@ if [ ! -f "/app/package.json" ]; then
     
     echo "Installing dependencies..."
     cd /app && npm install
+else
+    echo "Workspace already initialized, skipping setup..."
 fi
 
-# Ensure we're in the app directory
-cd /app
+exec "$@"
