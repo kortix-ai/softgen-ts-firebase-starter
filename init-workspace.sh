@@ -10,4 +10,10 @@ else
     echo "Workspace already initialized, skipping setup..."
 fi
 
+# Create .env.local if it doesn't exist
+if [ ! -f "/app/.env.local" ]; then
+    echo "Creating .env.local file..."
+    touch /app/.env.local
+fi
+
 exec "$@"
