@@ -6,14 +6,6 @@ if [ ! -f "/app/package.json" ]; then
     cd /template-files && find . -type f ! -name 'init-workspace.sh' ! -name 'Dockerfile' -exec cp --parents {} /app/ \;
     cd /template-files && find . -type f -name '.*' ! -name 'init-workspace.sh' ! -name 'Dockerfile' -exec cp --parents {} /app/ \; 2>/dev/null || true
     
-<<<<<<< HEAD
-    echo "Installing dependencies..."
-    cd /app && npm install
-fi
-
-# Ensure we're in the app directory
-cd /app
-=======
 else
     echo "Workspace already initialized, skipping setup..."
 fi
@@ -25,4 +17,3 @@ if [ ! -f "/app/.env.local" ]; then
 fi
 
 exec "$@"
->>>>>>> f047da82e9f906d5205ea5c5da3a18f2dc678cf1
